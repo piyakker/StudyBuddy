@@ -11,3 +11,9 @@ class RoomForm(ModelForm):
     class Meta:
         model = Room
         fields = '__all__'
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'username', 'email', 'bio']
