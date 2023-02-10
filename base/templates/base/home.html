@@ -8,23 +8,22 @@
   }
 </style>
 
-<div class="home-container">
-
-  <div>
-    {% include 'base/topics_component.html' %}
-  </div>
-
-  <div>
-    <h3>Study Rooms</h3>
-    <h5>{{rooms.count}} rooms available</h5>
-    <a href="{% url 'create-room' %}">+ Create Room</a>
-    <div>
-      {% include 'base/feed_component.html' %}
+<div class="container-fluid">
+  <div class="row row-cols-4">
+    <div class="col-2 text-center">
+      {% include 'base/topics_component.html' %}
+    </div>
+    <div class="col-7">
+      <h1>Study Rooms</h1>
+      <h5>{{rooms.count}} rooms available</h5>
+      <div>
+        {% include 'base/feed_component.html' %}
+      </div>
+    </div>
+    <div class="col-3">
+      {% include 'base/activity_component.html' %}
     </div>
   </div>
-
-  <div>
-    {% include 'base/activity_component.html' %}
-  </div>
 </div>
+
 {% endblock %}
