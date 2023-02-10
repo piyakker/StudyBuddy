@@ -21,7 +21,7 @@
           {% endif %}
           <ul class="dropdown-menu">
             {% if request.user.is_authenticated %}
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'user-profile' request.user.id %}">Profile</a></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             {% else %}
             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
