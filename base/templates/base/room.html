@@ -15,7 +15,7 @@
         {% for message in room_messages %}
         <div class="d-flex justify-content-between">
           <div>
-            <p class="fs-6"><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a> {{message.created|timesince}}
+            <p class="fs-6"><a href="{% url 'user-profile' message.user.id %}">@{{message.user.username}}</a> {{message.created|timesince}}
               ago</p>
             <br>
             <p class="fs-5">{{message}}</p>

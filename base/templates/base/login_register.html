@@ -2,34 +2,44 @@
 
 {% block content %}
 {% if page == 'login' %}
-<div>
+<div class="container mt-4">
+  <h1>Login</h1>
   <form action="" method="POST">
     {% csrf_token %}
 
-    <label for="username">Username : </label>
-    <input type="text" id="username" name="username" placeholder="Username">
+    <div class="mt-4">
+      <label for="email">Email : </label>
+      <input type="text" id="email" name="email" placeholder="e.g. dennis@email.com">
+    </div>
 
-    <label for="password">Password : </label>
-    <input type="password" id="password" name="password" placeholder="Password">
+    <div class="mt-4">
+      <label for="password">Password : </label>
+      <input type="password" id="password" name="password" placeholder="Password">
+    </div>
 
-    <button type="submit">Login</button>
+    <button class=" btn btn-success mt-4" type="submit">Login</button>
   </form>
 
-  <p>Haven't signed up yet?</p>
-  <a href="{% url 'register' %}">Register</a>
+  <p class="fs-5 mt-3">Haven't signed up yet? <a href="{% url 'register' %}">Register</a></p>
+  
 </div>
 {% else %}
-<div>
+<div class="container">
+  <h1>Register</h1>
   <form action="" method="POST">
     {% csrf_token %}
-
-    {{form.as_p}}
-
-    <button type="submit">Register</button>
+  
+    {% for field in form %}
+    <div class="mt-4">
+      <label for="room_name">{{ field.label }} : </label>
+      {{ field }}
+    </div>
+    {% endfor %}
+    <button class=" btn btn-success mt-4" type="submit">Register</button>
   </form>
 
-  <p>Haven't signed in yet?</p>
-  <a href="{% url 'login' %}">Login</a>
+  <p class="fs-5 mt-3">Already have an account?<a href="{% url 'login' %}">Login</a></p>
+  
 </div>
 {% endif %}
 
