@@ -99,7 +99,7 @@ def createRoom(request):
         room = Room.objects.create(
             host=request.user,
             topic=topic,
-            name=request.POST.get('name'),
+            name=request.POST.get('name').capitalize(),
             description=request.POST.get('description')
         )
         room.participants.add(request.user)
@@ -110,6 +110,7 @@ def createRoom(request):
 
 @login_required(login_url='/login')
 def updateRoom(request, pk):
+    page='update'
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
     topics = Topic.objects.all()
@@ -123,12 +124,12 @@ def updateRoom(request, pk):
             form = RoomForm(request.POST, instance=room)
             topic_name = request.POST.get('topic')
             topic, created = Topic.objects.get_or_create(name=topic_name)
-            room.name = request.POST.get('name')
+            room.name = request.POST.get('name').capitalize()
             room.topic = topic
             room.description = request.POST.get('description')
             room.save()
             return redirect('home')
-    context = {'form': form, 'topics': topics, 'room': room}
+    context = {'form': form, 'topics': topics, 'room': room, 'page': page}
     return render(request, 'base/room_form.html', context)
 
 

@@ -2,12 +2,11 @@
 
 {% block content %}
 <div class="container mt-4">
+  {% if page == 'update' %}
+  <h1>Let's Update a Room!</h1>
+  {% else %}
   <h1>Let's Create a Room!</h1>
-  <!-- <form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Submit</button>
-  </form> -->
+  {% endif %}
   <form class="form mt-4" action="" method="POST">
     {% csrf_token %}
   
